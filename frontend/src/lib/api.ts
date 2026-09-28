@@ -10,7 +10,7 @@ import {
   AuditLogItem,
 } from '../types';
 
-const API_BASE = '/api';
+const API_BASE = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '') + '/api';
 
 export async function fetchWeatherCurrent(lat: number, lon: number, name?: string): Promise<WeatherPoint> {
   const params = new URLSearchParams({ lat: lat.toString(), lon: lon.toString() });
